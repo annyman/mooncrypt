@@ -8,7 +8,10 @@ end
 
 function love.draw()
     love.graphics.setColor(1, 1, 1)
-    love.graphics.print("Welcome to Mooncrypt!", 400, 300)
+    screenHeight = love.window.getHeight()
+    screenWidth = love.window.getWidth()
+    love.graphics.print("Welcome to Mooncrypt!",screenWidth/2
+, screenHeight/2)
     love.graphics.print("Current FPS: "..tostring(love.timer.getFPS( )), 10, 10)
 end
 
