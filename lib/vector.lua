@@ -1,4 +1,4 @@
-Vec = {} -- // TODO rewrite the whole vec library
+local Vec = {} -- // TODO rewrite the whole vec library
 
 function Vec:new(x, y)
     local self = {}

@@ -1,4 +1,5 @@
-Player = {}
+local Player = {}
+
 
 function Player:new(sprite, pos)
     local self = {}
