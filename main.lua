@@ -17,7 +17,7 @@ function love.load()
         Vec:new(SCREEN_WIDTH/2, SCREEN_HEIGHT/2)
     )
 
-    lvl1 = Dungeon:create(1)
+    lvl1 = Dungeon:create(10)
 
 end
 
@@ -26,6 +26,6 @@ function love.update(dt)
 end
 
 function love.draw()
-    love.graphics.print("Current FPS: "..tostring(love.timer.getFPS( )), 10, 10) -- print fps
+    love.graphics.print("Current FPS: "..tostring(love.timer.getFPS()), 10, 10) -- print fps
     Player:draw(moon)
 end

@@ -27,25 +27,6 @@ function Utils:get_adjacent_cells(cell)
     }
 end
 
-function Utils:bin_matrix(size, coords)
-    local mat = Utils:new_matrix(size, size)
-
-    for _, coord in ipairs(coords) do
-        mat[coord[1]][coord[2]] = 1
-    end
-
-    return mat
-end
-
-function Utils:offset_coords(coords, offset)
-    local offset_coords = {}
-    for _, v in ipairs(coords) do
-        table.insert(offset_coords, (Utils:add_coords(v, {offset, offset})))
-    end
-
-    return offset_coords
-end
-
 function Utils:print_matrix(matrix)
     for i = 1, #matrix do
         for j = 1, #matrix[i] do
