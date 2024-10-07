@@ -34,4 +34,18 @@ function Dungeon:create(curr_level)
     return gen
 end
 
+function Dungeon:draw(gen)
+    for i = 1, #gen do
+        for j = 1, #gen[i] do
+            if gen[i][j] == 1 then
+                love.graphics.draw(floor, (i * CELL_SIZE), (j * CELL_SIZE))
+            end
+        end
+    end
+end
+
+function Dungeon:fill_dungeon()
+    
+end
+
 return Dungeon
