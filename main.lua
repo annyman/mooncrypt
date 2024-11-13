@@ -22,13 +22,13 @@ function love.load()
     )
 
     CM = Camera.newManager() -- camera yap
-    CM.setScale(1.75)
+    CM.setScale(1.5)
     CM.setDeadzone(-16,-16,16,16)
     CM.setLerp(0.2)
     CM.setOffset(0)
     CM.setCoords(0, 0)
 
-    lvl1 = Dungeon:create(7)
+    lvl1 = Dungeon:create(5)
 end
 
 function love.update(dt)

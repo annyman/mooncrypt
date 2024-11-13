@@ -1,7 +1,7 @@
-types = { "wall", "pots", "enemy" }
+local types = { "wall", "pots", "enemy" }
 
 -- first room is exit
-lvl = {
+local lvl = {
     {
         {0, 0, 0, 0, 0, 0},
         {0, 0, 1, 0, 1, 0},
@@ -92,3 +92,4 @@ lvl = {
     },
 }
 
+return lvl

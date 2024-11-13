@@ -1,4 +1,5 @@
 Utils = require "lib.utils"
+lvl = require "lib.levels"
 
 local Dungeon = {}
 
@@ -34,11 +35,19 @@ function Dungeon:create(curr_level)
     return gen
 end
 
+function Dungeon:draw_level(ox, oy, lvl)
+    for p = 1, #lvl do
+        for q = 1, #lvl[p] do
+            love.graphics.draw(floor, (p * CELL_SIZE) + ox, (q * CELL_SIZE) + oy)
+        end
+    end
+end
+
 function Dungeon:draw(gen)
     for i = 1, #gen do
         for j = 1, #gen[i] do
             if gen[i][j] == 1 then
-                love.graphics.draw(floor, (i * CELL_SIZE), (j * CELL_SIZE))
+                Dungeon:draw_level((i * CELL_SIZE * 6) - (CELL_SIZE * 20), (j *CELL_SIZE * 6) - (CELL_SIZE * 20), lvl[6])
             end
         end
     end
