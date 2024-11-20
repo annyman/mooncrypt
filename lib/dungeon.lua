@@ -4,7 +4,7 @@ lvl = require "lib.levels"
 local Dungeon = {}
 
 function Dungeon:create(curr_level)
-    local total_rooms = curr_level + 3 -- 6 is the min. no. of rooms
+    local total_rooms = curr_level -- 6 is the min. no. of rooms
     local offset = math.ceil((total_rooms/2))
     local origin = {offset, offset}
     local gen = Utils:new_matrix(total_rooms, total_rooms)
@@ -13,24 +13,32 @@ function Dungeon:create(curr_level)
     local maybe_room = {}
 
     while room_count < total_rooms do
-        for _, coord in ipairs(Utils:get_adjacent_cells(origin)) do
+        if Utils:get_adjacent_cells(origin, total_rooms) == nil then goto continue end
+        for _, coord in ipairs(Utils:get_adjacent_cells(origin, total_rooms)) do
             if coord[1] > 0 and coord[1] < total_rooms and coord[2] > 0 and coord[2] < total_rooms and gen[coord[1]][coord[2]] == 0 then
                 table.insert(maybe_room, coord)
             end
         end
 
         math.randomseed(os.time())
-        local choice = math.random(1, #maybe_room)
-        local set_coord = maybe_room[choice]
+
+        choice = math.random(1, #maybe_room)
+        set_coord = maybe_room[choice]
+
+        if gen[set_coord[1]][set_coord[2]] == 1 then
+            goto continue
+        end
 
         gen[set_coord[1]][set_coord[2]] = 1
         origin = set_coord
         table.remove(maybe_room, choice)
 
         room_count = room_count + 1
+        ::continue::
     end
 
     Utils:print_matrix(gen) -- debugging
+    print("\n")
 
     return gen
 end

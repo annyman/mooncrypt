@@ -1,3 +1,4 @@
+local dungeon = require "lib.dungeon"
 local Player = {}
 
 function Player:new(sprite, pos)
@@ -22,7 +23,9 @@ function Player:update(plr, dt)
 
         if k == 'q' then -- exit program press 'Q'
             love.event.quit()
-         end
+        elseif k == 'r' then
+            lvl1 = dungeon:create(5)
+        end
     end
 end
 

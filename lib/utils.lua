@@ -18,13 +18,15 @@ function Utils:add_coords(p1, p2)
     }
 end
 
-function Utils:get_adjacent_cells(cell)
-    return {
-        Utils:add_coords(cell, {0, -1}),
-        Utils:add_coords(cell, {1, 0}),
-        Utils:add_coords(cell, {0, 1}),
-        Utils:add_coords(cell, {-1, 0})
-    }
+function Utils:get_adjacent_cells(cell, size)
+    result = {}
+
+    if Utils:add_coords(cell, {0, -1})[1] < size and Utils:add_coords(cell, {0, -1})[2] < size then table.insert(result, Utils:add_coords(cell, {0, -1})) end
+    if Utils:add_coords(cell, {-1, 0})[1] < size and Utils:add_coords(cell, {-1, 0})[2] < size then table.insert(result, Utils:add_coords(cell, {-1, 0})) end
+    if Utils:add_coords(cell, {1, 0})[1] < size and Utils:add_coords(cell, {1, 0})[2] < size then table.insert(result, Utils:add_coords(cell, {1, 0})) end
+    if Utils:add_coords(cell, {0, 1})[1] < size and Utils:add_coords(cell, {0, 1})[2] < size then table.insert(result, Utils:add_coords(cell, {0, 1})) end
+
+    return result
 end
 
 function Utils:print_matrix(matrix)
